@@ -22,7 +22,7 @@ const TodoItem = ({todo}) => {
                 Выполнено
             </div>
 
-            {todo.edit &&
+            {!todo.edit &&
             <div id='TodoText'
                  className={`text-sm ${todo.completed ? 'line-through font-medium text-lime-400' : ''}`}>
                 {todo.text}
@@ -30,7 +30,7 @@ const TodoItem = ({todo}) => {
             }
 
 
-            {!todo.edit && <input
+            {todo.edit && <input
                 value={todo.text}
                 onChange={(e) => {
                     dispatch(changeTodo({
@@ -38,7 +38,7 @@ const TodoItem = ({todo}) => {
                         text: e.target.value
                     }))
                 }}
-            />}}
+            />}
 
             <div className={`flex flex-end items-center gap-3`}>
                 <div
